@@ -1,8 +1,4 @@
-Spraytan is a crawler for the Sunlight Labs 50-state project (
-http://wiki.sunlightlabs.com/index.php/State_Legislation_Page ).  It takes 
-JSON-formatted parselets ( see http://github.com/fizx/parsley/tree/master 
-and http://parselets.com ) as input, and outputs csv files in the folder 
-of your choice.
+Spraytan is a crawler for the Sunlight Labs 50-state project ( http://wiki.sunlightlabs.com/index.php/State_Legislation_Page ).  It takes JSON-formatted parselets ( see http://github.com/fizx/parsley/tree/master and http://parselets.com ) as input, and outputs csv files in the folder of your choice.
 
 The spraytan schema looks like the following (prefix_name-field_name):
 
@@ -31,9 +27,7 @@ The spraytan schema looks like the following (prefix_name-field_name):
     
     links  [any pages that should be spidered next]
     
-Records will be appended to "/output/folder/<pluralized_prefix>.csv".   
-All fields are optional-ish.  Multiple records on one page can be 
-expressed as a group named as the plural prefix of the type.  
+Records will be appended to "/output/folder/<pluralized_prefix>.csv". All fields are optional-ish.  Multiple records on one page can be expressed as a group named as the plural prefix of the type.  
 
 Example usage:
 
