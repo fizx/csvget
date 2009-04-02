@@ -1,0 +1,33 @@
+#!/usr/bin/env ruby
+require "rubygems"
+require "rwget"
+require File.dirname(__FILE__) + "/../lib/spraytan"
+
+parselet_links = Spraytan::ParseletLinks.new
+
+parser = RWGetOptionParser.new do |opts|
+  opts.on("--parselet=JSON_FILE", "JSON_FILE must implement the spraytan schema") do |path|
+    parselet_links.add_parselet(path)
+  end
+  
+  
+  opts.on("--output-folder=FOLDER", "Where to dump the csv files") do |path|
+    parselet_links.add_parselet(path)
+  end
+  
+  opts.on("--help-schema", "Print out the Spraytan/Parselet Schema docs") do |c|
+    puts File.read(File.dirname(__FILE__) + "/../README-SCHEMA")
+    exit 0
+  end
+end
+parser.parse!
+
+if parser.options[:seeds].empty?
+  puts parser.usage
+  puts "    -h for options listing"
+  exit(1) 
+end
+
+parser.options[:links_class] ||= parselet_links
+
+RWGet::Controller.new(parser.options).start
