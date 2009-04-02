@@ -1,7 +1,6 @@
 The spraytan schema looks like the following (prefix_name-field_name):
 
 		bill-state
-		bill-state
 		bill-chamber
 		bill-session
 		bill-bill_id

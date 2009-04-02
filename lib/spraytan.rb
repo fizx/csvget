@@ -2,12 +2,16 @@ require "rubygems"
 require "rwget"
 
 module Spraytan
+  class DontStore
+    def initialize(*args); end
+    def put(*args); end
+  end
+  
   class ParseletLinks
     attr_accessor :output_folder
     
     SCHEMA = %w[
       
-        bill-state
     		bill-state
     		bill-chamber
     		bill-session
@@ -37,9 +41,10 @@ module Spraytan
     INDIVIDUAL = PREFIXES.map{|p| "#{p}-"}
     PLURAL = PREFIXES.map{|p| "#{p}s"}
     
-    def initialize
-      @output_folder = "."
-      @parselets = []
+    def initialize(options)
+      @output_folder = options[:output_folder] || "."
+      @parselets = options[:parselets].map{|path| Parsley.new(File.read(path)) }
+      @files = {}
     end
     
     def headers
@@ -57,6 +62,7 @@ module Spraytan
     
     def walk(data, prefix = nil)
       output = {}
+      
       data.each do |k, v|
         if pre = prefix || INDIVIDUAL.find{|pre| k.starts_with?(pre) }
           pre.gsub!("-", "")
@@ -67,10 +73,20 @@ module Spraytan
           v.each{|entry| walk(entry, key)}
         end
       end
+      
       output.each do |prefix, values|
         file_name = File.join(@output_folder, "#{prefix}s.csv")
-        file[prefix] ||= FasterCSV.open(file_name, "a", :headers => headers["#{prefix}s"], :write_headers => true)
+        h = headers[prefix]
+        @files[prefix] ||= FasterCSV.open(file_name, "a", :headers => h, :write_headers => true)
+        @files[prefix] << h.inject([]) do |memo, key|
+          memo << values[key]
         end
+      end
+    end
+    
+    def close
+      @files.each do |k, v|
+        v.close
       end
     end
     
@@ -79,7 +95,7 @@ module Spraytan
       @parselets.each do |parselet|
         begin
           output = parselet.parse(:file => temp_file.path)
-          urls += [output["links"]].compact.flatten
+          urls += [output["links"]].compact.flatten.map{|u| URI.join(base_uri, u) }
           walk(output)
         rescue ParsleyError => e
           STDERR.puts "warning: #{e.message}"

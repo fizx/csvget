@@ -3,15 +3,14 @@ require "rubygems"
 require "rwget"
 require File.dirname(__FILE__) + "/../lib/spraytan"
 
-parselet_links = Spraytan::ParseletLinks.new
-
 parser = RWGetOptionParser.new do |opts|
   opts.on("--parselet=JSON_FILE", "JSON_FILE must implement the spraytan schema") do |path|
-    parselet_links.add_parselet(path)
+    parser.options[:parselets] ||= []
+    parser.options[:parselets] << path
   end
   
   opts.on("--output-folder=FOLDER", "Where to dump the csv files") do |path|
-    parselet_links.output_folder = File.expand_path(path)
+    parser.options[:output_folder] = File.expand_path(path)
   end
   
   opts.on("--help-schema", "Print out the Spraytan/Parselet Schema docs") do |c|
@@ -27,6 +26,9 @@ if parser.options[:seeds].empty?
   exit(1) 
 end
 
-parser.options[:links_class] ||= parselet_links
+parser.options[:links_class] ||= Spraytan::ParseletLinks
+parser.options[:store_class] ||= Spraytan::DontStore
 
-RWGet::Controller.new(parser.options).start
+controller = RWGet::Controller.new(parser.options)
+controller.start
+controller.close
