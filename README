@@ -16,9 +16,8 @@ The spraytan schema looks like the following (prefix_name-field_name):
     bill-session
     bill-bill_id
     bill-name
-    bill-guid
 
-    bill_version-bill
+    bill_version-bill_id
     bill_version-name
     bill_version-url
 

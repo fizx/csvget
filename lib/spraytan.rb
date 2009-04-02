@@ -66,13 +66,13 @@ class ParseletLinks
   
   def walk(data, prefix = nil)
     output = {}
-    
+    return unless data.is_a?(Hash)
     data.each do |k, v|
       if pre = prefix || INDIVIDUAL.find{|pre| k.starts_with?(pre) }
         pre.gsub!("-", "")
         output[pre] ||= {}
         output[pre][k.split("-").last] = v
-      elsif key = PLURAL.find{|pre| k == pre } && v.is_a?(Array)
+      elsif v.is_a?(Array) && key = PLURAL.find{|pre| k == pre }
         key.gsub!(/s$/, "")  # singular
         v.each{|entry| walk(entry, key)}
       end
