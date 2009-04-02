@@ -24,8 +24,8 @@ The spraytan schema looks like the following (prefix_name-field_name):
 		action-text
 		action-date
 		
+		links  [any pages that should be spidered next]
 		
-
 Records will be appended to "/output/folder/<pluralized_prefix>.csv".   
 All fields are optional-ish.  Multiple records on one page can be 
 expressed as a group named as the plural prefix of the type.  i.e.:

@@ -10,9 +10,8 @@ parser = RWGetOptionParser.new do |opts|
     parselet_links.add_parselet(path)
   end
   
-  
   opts.on("--output-folder=FOLDER", "Where to dump the csv files") do |path|
-    parselet_links.add_parselet(path)
+    parselet_links.output_folder = File.expand_path(path)
   end
   
   opts.on("--help-schema", "Print out the Spraytan/Parselet Schema docs") do |c|
