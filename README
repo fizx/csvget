@@ -1,5 +1,14 @@
 Spraytan is a crawler for the Sunlight Labs 50-state project ( http://wiki.sunlightlabs.com/index.php/State_Legislation_Page ).  It takes JSON-formatted parselets ( see http://github.com/fizx/parsley/tree/master and http://parselets.com ) as input, and outputs csv files in the folder of your choice.
 
+Dependencies:
+- http://github.com/fizx/parsley/tree/master and its dependencies.
+- Rubygems
+
+Install:
+- Install the dependencies.  
+- > gem sources -a http://gems.github.com 
+- > sudo gem install fizx-spraytan
+
 The spraytan schema looks like the following (prefix_name-field_name):
 
     bill-state
