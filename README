@@ -40,7 +40,7 @@ Records will be appended to "/output/folder/<pluralized_prefix>.csv". All fields
 
 Example usage:
 
-    spraytan --output-folder=./data --parselet=arizona-bills.json --parselet=arizona-sponsors.json http://azleg.gov/Bills.asp
+    spraytan --directory-prefix=./data --parselet=arizona-bills.json --parselet=arizona-sponsors.json http://azleg.gov/Bills.asp
 
 Example parselets style:
 
