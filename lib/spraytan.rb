@@ -3,6 +3,7 @@ require "rwget"
 require "parsley"
 require "fastercsv"
 require "activesupport"
+require "fileutils"
 
 class DontStore
   def initialize(*args); end
@@ -45,6 +46,7 @@ class ParseletLinks
   
   def initialize(options = {})
     @output_folder = options[:output_folder] || "."
+    FileUtils.mkdir_p(@output_folder)
     @parselets = (options[:parselets] || []).map{|path| Parsley.new(File.read(path)) }
     @files = {}
   end

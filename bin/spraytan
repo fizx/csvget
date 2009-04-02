@@ -14,7 +14,7 @@ parser = RWGetOptionParser.new do |opts|
   end
   
   opts.on("--help-schema", "Print out the Spraytan/Parselet Schema docs") do |c|
-    puts File.read(File.dirname(__FILE__) + "/../README-SCHEMA")
+    puts File.read(File.dirname(__FILE__) + "/../README")
     exit 0
   end
 end
