@@ -1,7 +1,7 @@
 #!/usr/bin/env ruby
 require "rubygems"
-require "rwget"
 require File.dirname(__FILE__) + "/../lib/spraytan"
+require "rwget"
 
 parser = RWGetOptionParser.new do |opts|
   opts.on("--parselet=JSON_FILE", "JSON_FILE must implement the spraytan schema") do |path|
@@ -26,9 +26,13 @@ if parser.options[:seeds].empty?
   exit(1) 
 end
 
-parser.options[:links_class] ||= Spraytan::ParseletLinks
-parser.options[:store_class] ||= Spraytan::DontStore
+parser.options[:links_class] ||= :ParseletLinks
+parser.options[:store_class] ||= :DontStore
 
 controller = RWGet::Controller.new(parser.options)
-controller.start
-controller.close
+begin
+  controller.start
+ensure
+  STDERR.puts "Closing..."
+  controller.close
+end

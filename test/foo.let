@@ -1,4 +1,4 @@
 {
-	"bill-state": "title"
-	"links": ["a"],
+	"bill-state": "title",
+	"links": ["a @href"]
 }
