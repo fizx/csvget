@@ -1,4 +1,7 @@
-Spraytan is a crawler for the Sunlight Labs 50-state project.  It takes JSON-formatted parselets ( see http://github.com/fizx/parsley/tree/master and http://parselets.com ) as input.
+Spraytan is a crawler for the Sunlight Labs 50-state project.  It takes 
+JSON-formatted parselets ( see http://github.com/fizx/parsley/tree/master 
+and http://parselets.com ) as input, and outputs csv files in the folder 
+of your choice.
 
 The spraytan schema looks like the following (prefix_name-field_name):
 
