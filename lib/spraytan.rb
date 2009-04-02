@@ -45,7 +45,7 @@ class ParseletLinks
   PLURAL = PREFIXES.map{|p| "#{p}s"}
   
   def initialize(options = {})
-    @output_folder = options[:output_folder] || "."
+    @output_folder = options[:prefix] || "."
     FileUtils.mkdir_p(@output_folder)
     @parselets = (options[:parselets] || []).map{|path| Parsley.new(File.read(path)) }
     @files = {}

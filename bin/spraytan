@@ -9,11 +9,7 @@ parser = RWGetOptionParser.new do |opts|
     parser.options[:parselets] << path
   end
   
-  opts.on("--output-folder=FOLDER", "Where to dump the csv files") do |path|
-    parser.options[:output_folder] = File.expand_path(path)
-  end
-  
-  opts.on("--help-schema", "Print out the Spraytan/Parselet Schema docs") do |c|
+  opts.on("--readme", "Print out the Spraytan/Parselet Schema docs") do |c|
     puts File.read(File.dirname(__FILE__) + "/../README")
     exit 0
   end
