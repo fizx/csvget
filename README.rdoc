@@ -24,7 +24,7 @@
         "time": "match(.subtext, '\\d+\\s+\\w+\\s+ago')"
       }]
     }
-    > spraytan --directory-prefix=./data --parselet=hn.let http://news.ycombinator.com/ -A "/x"
+    > csvget --directory-prefix=./data --parselet=hn.let http://news.ycombinator.com/ -A "/x"
 
 == Copyright
 
