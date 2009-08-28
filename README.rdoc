@@ -13,18 +13,18 @@
 
 == Example Usage
 
-		> cat hn.let
-		{
-			"headlines":[{
-				"title": ".title a",
-				"link": ".title a @href",
-				"comments": "match(.subtext a:nth-child(3), '\\d+')",
-				"user": ".subtext a:nth-child(2)",
-				"score": "match(.subtext span, '\\d+')",
-				"time": "match(.subtext, '\\d+\\s+\\w+\\s+ago')"
-			}]
-		}
-		> spraytan --directory-prefix=./data --parselet=hn.let http://news.ycombinator.com/ -A "/x"
+    > cat hn.let
+    {
+      "headlines":[{
+        "title": ".title a",
+        "link": ".title a @href",
+        "comments": "match(.subtext a:nth-child(3), '\\d+')",
+        "user": ".subtext a:nth-child(2)",
+        "score": "match(.subtext span, '\\d+')",
+        "time": "match(.subtext, '\\d+\\s+\\w+\\s+ago')"
+      }]
+    }
+    > spraytan --directory-prefix=./data --parselet=hn.let http://news.ycombinator.com/ -A "/x"
 
 == Copyright
 
