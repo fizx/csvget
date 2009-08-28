@@ -17,7 +17,7 @@ class CSVStore
   def put(host, tmpfile)
     @parselets.each do |parselet|
       begin
-        output = parselet.parse(:file => temp_file.path)
+        output = parselet.parse(:file => tmpfile.path)
         walk(output)
       rescue ParsleyError => e
         STDERR.puts "warning: #{e.message}"
@@ -27,13 +27,15 @@ class CSVStore
   
   def walk(data, prefix = nil)
     data.each do |prefix, values|
-      file_name = File.join(@output_folder, "#{prefix}s.csv")
-      first_row = values.is_a?(Array) ? values.first : values
-      @files[prefix] ||= FasterCSV.open(file_name, "a", :headers => h, :write_headers => true)
-      @headers[prefix] ||= first_row.keys
+      values = [values] unless values.is_a?(Array)
+      file_name = File.join(@output_folder, "#{prefix}.csv")
+      h = @headers[prefix] ||= values.first.keys
+      f = @files[prefix] ||= FasterCSV.open(file_name, "a", :headers => h, :write_headers => true)
       
-      @files[prefix] << @headers[prefix].inject([]) do |memo, key|
-        memo << values[key]
+      values.each do |v|
+        f << h.inject([]) do |memo, key|
+          memo << v[key]
+        end
       end
     end
   end

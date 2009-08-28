@@ -17,7 +17,6 @@ if parser.options[:seeds].empty?
   exit(1) 
 end
 
-parser.options[:links_class] ||= "ParseletLinks"
 parser.options[:store_class] ||= "CSVStore"
 
 controller = RWGet::Controller.new(parser.options)
