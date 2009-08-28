@@ -5,6 +5,7 @@ begin
   require 'jeweler'
   Jeweler::Tasks.new do |gem|
     gem.name = "csvget"
+    gem.executables = ["csvget", "jsonget"]
     gem.summary = %Q{Uses parselets and rwget to generate csv files from websites}
     gem.description = %Q{Super easy to use (but lots of dependencies :/) parser}
     gem.email = "kyle@kylemaxwell.com"

@@ -13,7 +13,7 @@ Gem::Specification.new do |s|
   s.default_executable = %q{csvget}
   s.description = %q{Super easy to use (but lots of dependencies :/) parser}
   s.email = %q{kyle@kylemaxwell.com}
-  s.executables = ["csvget"]
+  s.executables = ["csvget", "jsonget"]
   s.extra_rdoc_files = [
     "LICENSE",
      "README.rdoc"
