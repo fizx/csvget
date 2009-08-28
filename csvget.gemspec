@@ -5,12 +5,11 @@
 
 Gem::Specification.new do |s|
   s.name = %q{csvget}
-  s.version = "0.1.0"
+  s.version = "0.2.0"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Kyle Maxwell"]
   s.date = %q{2009-08-28}
-  s.default_executable = %q{csvget}
   s.description = %q{Super easy to use (but lots of dependencies :/) parser}
   s.email = %q{kyle@kylemaxwell.com}
   s.executables = ["csvget", "jsonget"]
@@ -25,7 +24,10 @@ Gem::Specification.new do |s|
      "Rakefile",
      "VERSION",
      "bin/csvget",
+     "bin/jsonget",
+     "csvget.gemspec",
      "lib/csvget.rb",
+     "lib/jsonget.rb",
      "test/csvget_test.rb"
   ]
   s.homepage = %q{http://github.com/fizx/csvget}
