@@ -1,4 +1,4 @@
-= csvget
+= csvget (also, jsonget)
 
 == Dependencies
 
