@@ -1,17 +1,12 @@
 #!/usr/bin/env ruby
 require "rubygems"
-require File.dirname(__FILE__) + "/../lib/spraytan"
+require File.dirname(__FILE__) + "/../lib/csvget"
 require "rwget"
 
 parser = RWGetOptionParser.new do |opts|
-  opts.on("--parselet=JSON_FILE", "JSON_FILE must implement the spraytan schema") do |path|
+  opts.on("--parselet=JSON_FILE", "JSON_FILE is a parselet.") do |path|
     parser.options[:parselets] ||= []
     parser.options[:parselets] << path
-  end
-  
-  opts.on("--readme", "Print out the Spraytan/Parselet Schema docs") do |c|
-    puts File.read(File.dirname(__FILE__) + "/../README")
-    exit 0
   end
 end
 parser.parse!
@@ -22,8 +17,8 @@ if parser.options[:seeds].empty?
   exit(1) 
 end
 
-parser.options[:links_class] ||= :ParseletLinks
-parser.options[:store_class] ||= :DontStore
+parser.options[:links_class] ||= "ParseletLinks"
+parser.options[:store_class] ||= "CSVStore"
 
 controller = RWGet::Controller.new(parser.options)
 begin
