@@ -24,7 +24,19 @@
         "time": "match(.subtext, '\\d+\\s+\\w+\\s+ago')"
       }]
     }
-    > csvget --directory-prefix=./data --parselet=hn.let http://news.ycombinator.com/ -A "/x"
+    > csvget --directory-prefix=./data  -A "/x" -w 5 --parselet=hn.let http://news.ycombinator.com/
+		> head data/headlines.csv
+		comments,title,time,link,score,user
+		4,Simpson's paradox: why mistrust seemingly simple statistics,2 hours ago,http://en.wikipedia.org/wiki/Simpson%27s_paradox,41,waldrews
+		67,America's unjust sex laws,2 hours ago,http://www.economist.com/opinion/displaystory.cfm?story_id=14165460,59,MikeCapone
+		23,Buy somebody lunch,3 hours ago,http://www.whattofix.com/blog/archives/2009/08/buy-somebody-lu.php,58,DanielBMarkham
+		10,A design pattern is an artifact of a missing feature in your chosen language,3 hours ago,http://www.snell-pym.org.uk/archives/2008/12/29/design-patterns/,31,bensummers
+		4,API changes in Snow Leopard,1 hour ago,http://developer.apple.com/mac/library/releasenotes/MacOSX/WhatsNewInOSX/Articles/MacOSX10_6.html#//apple_ref/doc/uid/TP40008898-SW1,14,pieter
+		16,How to run a linux based home web server,3 hours ago,http://stevehanov.ca/blog/index.php?id=73,28,RiderOfGiraffes
+		1,"OpenCL ""Hello World""",1 hour ago,"http://developer.apple.com/mac/library/documentation/Performance/Conceptual/OpenCL_MacProgGuide/Example:Hello,World/Example:Hello,World.html",8,pieter
+		15,US Senate bill allows White House to disconnect private computers from Internet,4 hours ago,http://news.cnet.com/8301-13578_3-10320096-38.html,35,drewr
+		1,Strategy: Solve Only 80 Percent of the Problem,47 minutes ago,http://highscalability.com/strategy-solve-only-80-percent-problem,6,alrex021
+		
 
 == Copyright
 
