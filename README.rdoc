@@ -6,8 +6,8 @@
 
     --filter=RUBY_CODE RUBY_CODE will be eval'd in context of @row.is_a?(FasterCSV::Row)
 
-		# Example:
-		./bin/csvget --require=chronic --require=time --filter "@row['time']=Chronic.parse(@row['time']).iso8601" # ...
+    # Example:
+    ./bin/csvget --require=chronic --require=time --filter "@row['time']=Chronic.parse(@row['time']).iso8601" # ...
 
 2. Added CHANGELOG
 
