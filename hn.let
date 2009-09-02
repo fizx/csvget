@@ -1,0 +1,10 @@
+{
+   "headlines":[{
+     "title": ".title a",
+     "link": ".title a @href",
+     "comments": "match(.subtext a:nth-child(3), '\\d+')",
+     "user": ".subtext a:nth-child(2)",
+     "score": "match(.subtext span, '\\d+')",
+     "time": "match(.subtext, '\\d+\\s+\\w+\\s+ago')"
+   }]
+ }

@@ -8,6 +8,12 @@ parser = RWGetOptionParser.new do |opts|
     parser.options[:parselets] ||= []
     parser.options[:parselets] << path
   end
+  
+  opts.on("--filter=RUBY_CODE", "RUBY_CODE will be eval'd in context of @row.is_a?(FasterCSV::Row)") do |filter|
+    parser.options[:filter] ||= []
+    parser.options[:filter] << filter
+  end
+  
 end
 parser.parse!
 

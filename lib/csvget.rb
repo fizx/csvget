@@ -8,6 +8,7 @@ require "fileutils"
 class CSVStore
   def initialize(options = {})
     @output_folder = options[:prefix] || "."
+    @filters = options[:filter] || []
     FileUtils.mkdir_p(@output_folder)
     @parselets = (options[:parselets] || []).map{|path| Parsley.new(File.read(path)) }
     @files = {}
@@ -32,10 +33,13 @@ class CSVStore
       h = @headers[prefix] ||= values.first.keys
       f = @files[prefix] ||= FasterCSV.open(file_name, "a", :headers => h, :write_headers => true)
       
-      values.each do |v|
-        f << h.inject([]) do |memo, key|
-          memo << v[key]
+      values.each do |hash|
+        arr = h.inject([]) do |memo, key|
+          memo << hash[key]
         end
+        @row = FasterCSV::Row.new(h, arr)
+        @filters.each {|filter| eval(filter) }
+        f << @row
       end
     end
   end
