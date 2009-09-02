@@ -5,11 +5,11 @@
 
 Gem::Specification.new do |s|
   s.name = %q{csvget}
-  s.version = "0.2.1"
+  s.version = "0.3.0"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Kyle Maxwell"]
-  s.date = %q{2009-08-28}
+  s.date = %q{2009-09-02}
   s.description = %q{Super easy to use (but lots of dependencies :/) parser}
   s.email = %q{kyle@kylemaxwell.com}
   s.executables = ["csvget", "jsonget"]
@@ -19,6 +19,7 @@ Gem::Specification.new do |s|
   ]
   s.files = [
     ".gitignore",
+     "CHANGELOG",
      "LICENSE",
      "README.rdoc",
      "Rakefile",
@@ -26,6 +27,7 @@ Gem::Specification.new do |s|
      "bin/csvget",
      "bin/jsonget",
      "csvget.gemspec",
+     "hn.let",
      "lib/csvget.rb",
      "lib/jsonget.rb",
      "test/csvget_test.rb"
