@@ -1,5 +1,13 @@
 = csvget (also, jsonget)
 
+== What's new in 0.3.0
+
+1. Added command-line option:
+
+    --filter=RUBY_CODE RUBY_CODE will be eval'd in context of @row.is_a?(FasterCSV::Row)
+
+2. Added CHANGELOG
+
 == Dependencies
 
 - http://github.com/fizx/parsley/tree/master and its dependencies.
