@@ -31,7 +31,8 @@ class CSVStore
       values = [values] unless values.is_a?(Array)
       file_name = File.join(@output_folder, "#{prefix}.csv")
       h = @headers[prefix] ||= values.first.keys
-      f = @files[prefix] ||= FasterCSV.open(file_name, "a", :headers => h, :write_headers => true)
+      should_write_headers = !File.exists?(file_name)
+      f = @files[prefix] ||= FasterCSV.open(file_name, "a", :headers => h, :write_headers => should_write_headers)
       
       values.each do |hash|
         arr = h.inject([]) do |memo, key|
