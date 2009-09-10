@@ -12,7 +12,6 @@ begin
     gem.homepage = "http://github.com/fizx/csvget"
     gem.authors = ["Kyle Maxwell"]
     gem.add_dependency("fizx-rwget", ["> 0.2.3"])
-    gem.add_dependency("RubyInline")
     gem.add_dependency("fizx-parsley-ruby", ["> 0.0.0"])
     gem.add_dependency("activesupport", ["> 0.0.0"])
     gem.add_dependency("fastercsv", [">= 1.4.0"])
