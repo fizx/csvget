@@ -5,11 +5,11 @@
 
 Gem::Specification.new do |s|
   s.name = %q{csvget}
-  s.version = "0.3.0"
+  s.version = "0.3.1"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Kyle Maxwell"]
-  s.date = %q{2009-09-02}
+  s.date = %q{2009-09-10}
   s.description = %q{Super easy to use (but lots of dependencies :/) parser}
   s.email = %q{kyle@kylemaxwell.com}
   s.executables = ["csvget", "jsonget"]
@@ -47,20 +47,17 @@ Gem::Specification.new do |s|
 
     if Gem::Version.new(Gem::RubyGemsVersion) >= Gem::Version.new('1.2.0') then
       s.add_runtime_dependency(%q<fizx-rwget>, ["> 0.2.3"])
-      s.add_runtime_dependency(%q<RubyInline>, [">= 0"])
       s.add_runtime_dependency(%q<fizx-parsley-ruby>, ["> 0.0.0"])
       s.add_runtime_dependency(%q<activesupport>, ["> 0.0.0"])
       s.add_runtime_dependency(%q<fastercsv>, [">= 1.4.0"])
     else
       s.add_dependency(%q<fizx-rwget>, ["> 0.2.3"])
-      s.add_dependency(%q<RubyInline>, [">= 0"])
       s.add_dependency(%q<fizx-parsley-ruby>, ["> 0.0.0"])
       s.add_dependency(%q<activesupport>, ["> 0.0.0"])
       s.add_dependency(%q<fastercsv>, [">= 1.4.0"])
     end
   else
     s.add_dependency(%q<fizx-rwget>, ["> 0.2.3"])
-    s.add_dependency(%q<RubyInline>, [">= 0"])
     s.add_dependency(%q<fizx-parsley-ruby>, ["> 0.0.0"])
     s.add_dependency(%q<activesupport>, ["> 0.0.0"])
     s.add_dependency(%q<fastercsv>, [">= 1.4.0"])
