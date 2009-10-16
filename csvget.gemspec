@@ -5,11 +5,11 @@
 
 Gem::Specification.new do |s|
   s.name = %q{csvget}
-  s.version = "0.3.2"
+  s.version = "0.4.0"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Kyle Maxwell"]
-  s.date = %q{2009-09-10}
+  s.date = %q{2009-10-16}
   s.description = %q{Super easy to use (but lots of dependencies :/) parser}
   s.email = %q{kyle@kylemaxwell.com}
   s.executables = ["csvget", "jsonget"]
@@ -35,7 +35,7 @@ Gem::Specification.new do |s|
   s.homepage = %q{http://github.com/fizx/csvget}
   s.rdoc_options = ["--charset=UTF-8"]
   s.require_paths = ["lib"]
-  s.rubygems_version = %q{1.3.5}
+  s.rubygems_version = %q{1.3.4}
   s.summary = %q{Uses parselets and rwget to generate csv files from websites}
   s.test_files = [
     "test/csvget_test.rb"
