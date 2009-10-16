@@ -15,7 +15,8 @@ class JSONStore
   def put(host, tmpfile)
     @parselets.zip(@files).each do |parselet, file|
       begin
-        file.puts parselet.parse(:file => tmpfile.path, :output => :json) + ","
+        type = (`file "#{tmpfile.path}"` =~ /xml/i) ? :xml : :html
+        output = parselet.parse(:file => tmpfile.path, :input => type, :output => :json) + ","
       rescue ParsleyError => e
         STDERR.puts "warning: #{e.message}"
       end

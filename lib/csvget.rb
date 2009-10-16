@@ -18,7 +18,8 @@ class CSVStore
   def put(host, tmpfile)
     @parselets.each do |parselet|
       begin
-        output = parselet.parse(:file => tmpfile.path)
+        type = (`file "#{tmpfile.path}"` =~ /xml/i) ? :xml : :html
+        output = parselet.parse(:file => tmpfile.path, :input => type)
         walk(output)
       rescue ParsleyError => e
         STDERR.puts "warning: #{e.message}"
